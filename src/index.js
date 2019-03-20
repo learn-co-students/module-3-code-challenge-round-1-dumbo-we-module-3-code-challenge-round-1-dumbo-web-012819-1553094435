@@ -2,7 +2,7 @@
 
 const ulBeerList = document.querySelector('#list-group');
 const beerDetailDiv = document.querySelector('#beer-detail');
-
+const newBeerForm = document.querySelector('#new-beer-form');
 
 // ===== Fetch Requests
 
@@ -38,6 +38,30 @@ const editOneBeer = (id, description) => {
     })
 }
 
+const deleteBeer = (id) => {
+  fetch(`http://localhost:3000/beers/${id}`, {
+    method: 'DELETE'
+  })
+  .then(resp => {
+    deleteBeerHTML(id);
+  })
+}
+
+const addNewBeer = (name, tagline, first_brewed, description, image_url, food_pairing, brewers_tips, contributed_by) => {
+  fetch('http://localhost:3000/beers/', {
+    method: 'POST',
+    headers: {
+     'Content-Type': 'application/json',
+     'Accept': 'application/json'},
+    body: JSON.stringify({name: name, tagline: tagline, first_brewed: first_brewed, description: description, image_url: image_url, food_pairing: [food_pairing], brewers_tips: brewers_tips, contributed_by: contributed_by})
+  })
+  .then(resp => resp.json())
+  .then(newBeer => {
+    // this doesn't work
+    generateBeerHTML(newBeer);
+  })
+}
+
 // ===== Event Listeners
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -49,13 +73,30 @@ ulBeerList.addEventListener('click', (event) => {
 })
 
 beerDetailDiv.addEventListener('click', (event) => {
-  if (event.target.tagName === "BUTTON") {
+  if (event.target.id === "edit-beer") {
     const beerDescription = beerDetailDiv.querySelector('textarea').value;
     editOneBeer(event.target.dataset.id, beerDescription);
+  } else if (event.target.id === "delete-beer") {
+    deleteBeer(event.target.dataset.id);
   }
 })
 
-// ===== HTML Generators
+newBeerForm.addEventListener('click', (event) => {
+  if (event.target.tagName === 'BUTTON') {
+    const name = event.target.parentElement.name.value;
+    const tagline = event.target.parentElement.tagline.value;
+    const first_brewed = event.target.parentElement.first_brewed.value;
+    const description = event.target.parentElement.description.value;
+    const image_url = event.target.parentElement.image_url.value;
+    const food_pairing = event.target.parentElement.food_pairing.value;
+    const brewers_tips = event.target.parentElement.brewers_tips.value;
+    const contributed_by = event.target.parentElement.contributed_by.value;
+
+    addNewBeer(name, tagline, first_brewed, description, image_url, food_pairing, brewers_tips, contributed_by);
+  }
+})
+
+// ===== HTML Modifiers
 
 const generateBeerListHTML = (beer) => {
   const liTag = document.createElement('li');
@@ -81,11 +122,27 @@ const generateBeerHTML = (beer) => {
   textAreaTag.innerText = beer.description;
   textAreaTag.name = "description";
 
-  const buttonTag = document.createElement('button');
-  buttonTag.dataset.id = beer.id;
-  buttonTag.id = "edit-beer";
-  buttonTag.class = "btn btn-info";
-  buttonTag.innerText = "Save";
+  const editButtonTag = document.createElement('button');
+  editButtonTag.dataset.id = beer.id;
+  editButtonTag.id = "edit-beer";
+  editButtonTag.class = "btn btn-info";
+  editButtonTag.innerText = "Save";
 
-  beerDetailDiv.append(headerOneTag, imgTag, headerThreeTag, textAreaTag, buttonTag)
+  const deleteButtonTag = document.createElement('button');
+  deleteButtonTag.dataset.id = beer.id;
+  deleteButtonTag.id = "delete-beer";
+  deleteButtonTag.class = "btn btn-info";
+  deleteButtonTag.innerText = "Delete Beer";
+
+  beerDetailDiv.append(headerOneTag, imgTag, headerThreeTag, textAreaTag, editButtonTag, deleteButtonTag)
+}
+
+const deleteBeerHTML = (id) => {
+  const targettedBeer = document.querySelector(`[data-id='${id}']`).parentElement;
+  while(targettedBeer.firstChild) {
+    targettedBeer.removeChild(targettedBeer.firstChild);
+  }
+
+  const targettedBeerListItem = document.getElementById(`${id}`);
+  targettedBeerListItem.remove();
 }
