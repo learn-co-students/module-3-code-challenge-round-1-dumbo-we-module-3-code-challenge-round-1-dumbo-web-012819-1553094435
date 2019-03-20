@@ -18,11 +18,11 @@ By clicking one particular message on the master list, the application will show
 
 #### Today, you will be building a Beer App 🍺🍺🍺
 
--- As a user, when the page loads, I should see a list of beer names retrieved from an API on the left hand side of the screen.
+<!-- -- As a user, when the page loads, I should see a list of beer names retrieved from an API on the left hand side of the screen. -->
 
--- As a user, when I click a beer name, the application should reveal more information about that particular beer.
+<!-- -- As a user, when I click a beer name, the application should reveal more information about that particular beer. -->
 
--- As a user, when looking at the details of a beer, I can edit the current description of a beer. Clicking the 'Save' button will save any changes added to the description in the database
+<!-- -- As a user, when looking at the details of a beer, I can edit the current description of a beer. Clicking the 'Save' button will save any changes added to the description in the database -->
 
 ![beer gif](code-challenge-mod-iii-round-ii.gif)
 
@@ -32,9 +32,9 @@ Instead of actually accessing the data from a remote API, this challenge uses a 
 
 It is very easy to set-up.
 
-1 - Run the command `npm install -g json-server` in the command line from this directory
+<!-- 1 - Run the command `npm install -g json-server` in the command line from this directory -->
 
-2 - Run  `json-server --watch db.json`
+<!-- 2 - Run  `json-server --watch db.json` -->
 
 That's it. You will have a server running on `localhost:3000` that serves the JSON data contained in the `db.json` file.
 
@@ -44,7 +44,7 @@ That's it. You will have a server running on `localhost:3000` that serves the JS
 
 For this challenge, it is important to work iteratively, one feature at a time, before moving on to the next. You should **prioritize making code that works over attempting all of the deliverables.**
 
-### Step 1 - Display All Beer Names
+<!-- ### Step 1 - Display All Beer Names
 
 When the page loads, I should see a list of all of the beer names retrieved from the API on the left hand side of the screen. The API endpoint we need to retrieve all the beers is a conventional RESTful route
 
@@ -62,9 +62,9 @@ When the page loads, I should see a list of all of the beer names retrieved from
   <li class="list-group-item">Beer title 2</li>
   /* etc... */
 </ul>
-```
+``` -->
 
-### Step 2 - Display Single Beer Details
+<!-- ### Step 2 - Display Single Beer Details
 
 When I click a beer name, the application should reveal more information about that particular beer.
 See the example above for the additional information that should be displayed.
@@ -88,9 +88,9 @@ The html should look something like:
 <button id="edit-beer" class="btn btn-info">
   Save
 </button>
-```
+``` -->
 
-### Step 3 - Edit Beer Details
+<!-- ### Step 3 - Edit Beer Details
 
 When looking at the details of a beer, I can edit the current description of a beer. Clicking the 'Save' button will save any changes added to the description in the database. The edited beer should also update the DOM. For example, if I update the details of "Beer A" then click on another beer, when I go back to "Beer A", the description should be updated.
 
@@ -110,7 +110,7 @@ To update a beer you'll need to make a PATCH request
 
   **Important Notes:**
   * For all intents and purposes, PATCH behaves the same as POST. If you know how to POST, you know how to PATCH
-  * When using `fetch` to make a PATCH request, be sure to capitalize method: 'PATCH'
+  * When using `fetch` to make a PATCH request, be sure to capitalize method: 'PATCH' -->
 
 
 ## Considerations
