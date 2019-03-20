@@ -1,11 +1,22 @@
 {
   "beers": [
     {
+      "name": "Angelo's Beer",
+      "tagline": "The Best",
+      "first_brewed": "3000 BCE",
+      "description": "This is a good beer",
+      "image_url": "https://i.imgur.com/dcUUoRe.jpg",
+      "food_pairing": "anything",
+      "brewers_tips": "i can't help",
+      "contributed_by": "me",
+      "id": 26
+    },
+    {
       "id": 1,
       "name": "Buzz",
       "tagline": "A Real Bitter Experience.",
       "first_brewed": "09/2007",
-      "description": "A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.",
+      "description": "hello",
       "image_url": "https://images.punkapi.com/v2/keg.png",
       "food_pairing": [
         "Spicy chicken tikka masala",

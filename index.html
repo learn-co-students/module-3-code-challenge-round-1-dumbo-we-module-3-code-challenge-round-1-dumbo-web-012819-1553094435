@@ -22,11 +22,34 @@
     </div>
 
     <div class='col-md-8'>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add New Beer</button>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <form id="new-beer-form">
+                <input name="name" type="text" placeholder="Beer Name"><br>
+                <input name="tagline" type="text" placeholder="Tagline"><br>
+                <input name="first_brewed" type="text" placeholder="Date First Brewed (Month/Year)"><br>
+                <textarea name="description" type="textarea" placeholder="Description"></textarea><br>
+                <input name="image_url" type="text" placeholder="Image URL"><br>
+                <input name="food_pairing" type="text" placeholder="Food Pairings"><br>
+                <input name="brewers_tips" type="text" placeholder="Your Brewer Tips"><br>
+                <input name="contributed_by" type="text" placeholder="Contributor"><br>
+                <button class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
       <h2>Beer Detail</h2>
       <div id="beer-detail">
       </div>
     </div>
   </div>
   <script src="src/index.js"></script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
 </html>
